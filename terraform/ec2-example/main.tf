@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 locals {
-  region = "us-east-1"
-  name   = "batch-ex-${replace(basename(path.cwd), "_", "-")}"
+  region = "us-west-2"
+  name   = "batch-test-${replace(basename(path.cwd), "_", "-")}"
 
   tags = {
     Name       = local.name
@@ -20,13 +20,13 @@ data "aws_region" "current" {}
 ################################################################################
 
 module "batch_disabled" {
-  source = "../.."
+  source = "../../../terraform-aws-batch"
 
   create = false
 }
 
 module "batch" {
-  source = "../.."
+  source = "../../../terraform-aws-batch"
 
   instance_iam_role_name        = "${local.name}-ecs-instance"
   instance_iam_role_path        = "/batch/"
@@ -220,7 +220,7 @@ module "vpc" {
 
   enable_dhcp_options      = true
   enable_dns_hostnames     = true
-  dhcp_options_domain_name = data.aws_region.current.name == "us-east-1" ? "ec2.internal" : "${data.aws_region.current.name}.compute.internal"
+  dhcp_options_domain_name = data.aws_region.current.name == "us-west-2" ? "ec2.internal" : "${data.aws_region.current.name}.compute.internal"
 
   tags = local.tags
 }
