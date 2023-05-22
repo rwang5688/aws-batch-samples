@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  region = "us-west-2"
+  region = "us-east-2"
   name   = "batch-test-${replace(basename(path.cwd), "_", "-")}"
 
   tags = {
@@ -20,13 +20,15 @@ data "aws_region" "current" {}
 ################################################################################
 
 module "batch_disabled" {
-  source = "../../../terraform-aws-batch"
+  source  = "terraform-aws-modules/batch/aws"
+  version = "~> 2.0.1"
 
   create = false
 }
 
 module "batch" {
-  source = "../../../terraform-aws-batch"
+  source  = "terraform-aws-modules/batch/aws"
+  version = "~> 2.0.1"
 
   instance_iam_role_name        = "${local.name}-ecs-instance"
   instance_iam_role_path        = "/batch/"
@@ -62,7 +64,7 @@ module "batch" {
         min_vcpus      = 4
         max_vcpus      = 16
         desired_vcpus  = 4
-        instance_types = ["m5.large", "r5.large"]
+        instance_types = ["m6i.large", "r6i.large"]
 
         security_group_ids = [module.vpc_endpoint_security_group.security_group_id]
         subnets            = module.vpc.private_subnets
@@ -89,7 +91,7 @@ module "batch" {
         min_vcpus      = 4
         max_vcpus      = 16
         desired_vcpus  = 4
-        instance_types = ["m4.large", "m3.large", "r4.large", "r3.large"]
+        instance_types = ["m5.large", "m4.large", "r5.large", "r4.large"]
 
         security_group_ids = [module.vpc_endpoint_security_group.security_group_id]
         subnets            = module.vpc.private_subnets
@@ -220,7 +222,7 @@ module "vpc" {
 
   enable_dhcp_options      = true
   enable_dns_hostnames     = true
-  dhcp_options_domain_name = data.aws_region.current.name == "us-west-2" ? "ec2.internal" : "${data.aws_region.current.name}.compute.internal"
+  dhcp_options_domain_name = data.aws_region.current.name == "us-east-2" ? "ec2.internal" : "${data.aws_region.current.name}.compute.internal"
 
   tags = local.tags
 }

@@ -1,4 +1,4 @@
-# AWS Batch Example - EC2
+# AWS Batch Test - Example - EC2
 
 Configuration in this directory creates:
 
