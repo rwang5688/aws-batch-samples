@@ -112,9 +112,9 @@ module "batch" {
       state    = "ENABLED"
       priority = 1
 
-      compute_environments = ["small_ec2"]
+      compute_environments  = ["small_ec2"]
       scheduling_policy_arn = null
-      
+
       tags = {
         JobQueue = "Small job queue 1"
       }
@@ -125,7 +125,7 @@ module "batch" {
       state    = "ENABLED"
       priority = 2
 
-      compute_environments = ["small_ec2"]
+      compute_environments  = ["small_ec2"]
       scheduling_policy_arn = null
 
       tags = {
@@ -138,7 +138,7 @@ module "batch" {
       state    = "ENABLED"
       priority = 98
 
-      compute_environments = ["large_ec2"]
+      compute_environments  = ["large_ec2"]
       scheduling_policy_arn = null
 
       tags = {
@@ -151,7 +151,7 @@ module "batch" {
       state    = "ENABLED"
       priority = 99
 
-      compute_environments = ["large_ec2"]
+      compute_environments  = ["large_ec2"]
       scheduling_policy_arn = null
 
       tags = {
