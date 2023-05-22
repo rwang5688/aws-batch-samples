@@ -62,7 +62,7 @@ module "batch" {
       compute_resources = {
         type           = "EC2"
         min_vcpus      = 0
-        max_vcpus      = 16
+        max_vcpus      = 64
         desired_vcpus  = 0
         instance_types = ["m6i.4xlarge", "c6i.4xlarge", "r6i.4xlarge"]
 
@@ -86,7 +86,7 @@ module "batch" {
       compute_resources = {
         type           = "EC2"
         min_vcpus      = 0
-        max_vcpus      = 32
+        max_vcpus      = 128
         desired_vcpus  = 0
         instance_types = ["m6i.8xlarge", "c6i.8xlarge", "r6i.8xlarge"]
 
