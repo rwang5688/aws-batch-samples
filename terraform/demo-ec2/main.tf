@@ -169,8 +169,8 @@ module "batch" {
         command = ["ls", "-la"]
         image   = "public.ecr.aws/runecast/busybox:1.33.1"
         resourceRequirements = [
-          { type = "VCPU", value = "1" },
-          { type = "MEMORY", value = "1024" }
+          { type = "VCPU", value = "16" },
+          { type = "MEMORY", value = "32768" }
         ]
         logConfiguration = {
           logDriver = "awslogs"
@@ -210,8 +210,8 @@ module "batch" {
         command = ["ls", "-la"]
         image   = "public.ecr.aws/runecast/busybox:1.33.1"
         resourceRequirements = [
-          { type = "VCPU", value = "1" },
-          { type = "MEMORY", value = "1024" }
+          { type = "VCPU", value = "32" },
+          { type = "MEMORY", value = "65536" }
         ]
         logConfiguration = {
           logDriver = "awslogs"
