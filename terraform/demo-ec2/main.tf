@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  region = "us-east-2"
+  region = "us-west-2"
   name   = "batch-test-${replace(basename(path.cwd), "_", "-")}"
 
   tags = {
