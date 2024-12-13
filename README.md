@@ -1,1 +1,1 @@
-# aws-batch-test
+# aws-batch-samples
